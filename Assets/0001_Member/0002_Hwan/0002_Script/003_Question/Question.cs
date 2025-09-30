@@ -11,7 +11,6 @@ public class Question : MonoBehaviour
     {
         if (Keyboard.current.eKey.wasPressedThisFrame && playerIn == true)
         {
-   
             QuestionManager.Instance.OpenQuestion(myType);
         }
     }
