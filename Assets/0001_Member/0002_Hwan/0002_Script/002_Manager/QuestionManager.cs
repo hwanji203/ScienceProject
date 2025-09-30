@@ -5,16 +5,20 @@ public enum QuestionType
     None
 }
 
-public class QuestionManager : MonoBehaviour
+public class QuestionManager : MonoSingleton<QuestionManager>
 {
+    private bool opened = false;
+
     public void OpenQuestion(QuestionType questionType)
     {
+        if (opened == true) return;
+        opened = false;
+
         switch (questionType)
         {
             case QuestionType.None:
-                // 맞는 UI 열기
-                // 야르
                 break;
         }
+        Time.timeScale = 0;
     }
 }
