@@ -11,15 +11,15 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        float bgm = PlayerPrefs.GetFloat("BGMVolume", 0.75f);
-        float sfx = PlayerPrefs.GetFloat("SFXVolume", 0.75f);
+        float bgm = PlayerPrefs.GetFloat(SliderType.BGM.ToString(), 0.75f);
+        float sfx = PlayerPrefs.GetFloat(SliderType.SFX.ToString(), 0.75f);
 
         bgmSlider.value = bgm;
         sfxSlider.value = sfx;
 
         SetBGMVolume(bgm);
         SetSFXVolume(sfx);
-        
+
         bgmSlider.onValueChanged.AddListener(SetBGMVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
     }

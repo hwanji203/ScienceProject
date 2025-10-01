@@ -8,7 +8,8 @@ public enum SFXSoundType
     SliderValueChange,
     BirdsSwing,
     GetBird,
-    Hited
+    Hited,
+    Wrong
 }
 
 public enum BGMSoundType
@@ -43,22 +44,19 @@ public class SoundManager : MonoSingleton<SoundManager>, IChangeable
 
     private Dictionary<BGMSoundType, AudioClip> bgmSoundDict;
     [HideInInspector] public AudioSource bgmAudioSource;
-    private IChangeable _changeableImplementation;
-
     protected override void Awake()
     {
-        base.Awake();
-
-        AudioInitialized(out sfxAudioSource, out sfxSoundDict, sfxSounds);
-        AudioInitialized(out bgmAudioSource, out bgmSoundDict, bgmSounds);
+        base.Awake(); // MonoSingleton의 Awake (싱글톤 생성 보장)
+        Initialized(); // 여기서 Dict와 AudioSource 초기화
     }
 
-    private void Start()
+    private void Initialized()
     {
-        Play(BGMSoundType.MainScene);
+        InitializeAudioDictAndSource(out sfxAudioSource, out sfxSoundDict, sfxSounds);
+        InitializeAudioDictAndSource(out bgmAudioSource, out bgmSoundDict, bgmSounds);
     }
 
-    private void AudioInitialized<T1, T2>(out AudioSource audioSource, out Dictionary<T1, AudioClip> dict, List<T2> data) where T2 : SoundData<T1>
+    private void InitializeAudioDictAndSource<T1, T2>(out AudioSource audioSource, out Dictionary<T1, AudioClip> dict, List<T2> data) where T2 : SoundData<T1>
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
@@ -79,7 +77,7 @@ public class SoundManager : MonoSingleton<SoundManager>, IChangeable
             sfxAudioSource.PlayOneShot(clip);
         }
     }
-    public void Play(BGMSoundType type, float fadeTime = 1f)
+    public void Play(BGMSoundType type, float fadeTime = 0)
     {
         if (bgmSoundDict.TryGetValue(type, out var clip))
         {
@@ -111,8 +109,8 @@ public class SoundManager : MonoSingleton<SoundManager>, IChangeable
 
     public void OnChange()
     {
-        bgmAudioSource.volume = PlayerPrefs.GetFloat("BGMVolume", 0.75f);
-        sfxAudioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 0.75f);
+        bgmAudioSource.volume = PlayerPrefs.GetFloat(SliderType.BGM.ToString(), 0.75f);
+        sfxAudioSource.volume = PlayerPrefs.GetFloat(SliderType.SFX.ToString(), 0.75f);
     }
 }
 
