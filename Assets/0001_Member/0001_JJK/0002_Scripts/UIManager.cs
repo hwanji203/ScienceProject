@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Time.timeScale != 0 && Input.GetKeyDown(KeyCode.Escape))
         {
             if (!settingWindow.activeSelf)
                 Open();

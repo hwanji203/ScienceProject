@@ -9,7 +9,8 @@ public enum SFXSoundType
     BirdsSwing,
     GetBird,
     Hited,
-    Wrong
+    Wrong,
+    Type
 }
 
 public enum BGMSoundType

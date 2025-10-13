@@ -10,6 +10,7 @@ public class PlayerAnimation : MonoBehaviour
     private void Awake()
     {
         AnimCompo = GetComponent<Animator>();
+        AnimCompo.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
     private void SetWalkAnimation(bool value)
