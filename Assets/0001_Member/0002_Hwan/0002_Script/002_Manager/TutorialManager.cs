@@ -1,22 +1,33 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+public enum Word
+{
+    StartWord,
+    Locked,
+    GravityDir,
+    Yeppy,
+    Clear
+}
 
-public class TutorialManager : MonoBehaviour
+public class TutorialManager : MonoSingleton<TutorialManager>
 {
     private TalkManager talkManager;
 
-    public enum Word
-    {
-        StartWord
-    }
+    private Trigger[] triggers;
 
     private Dictionary<Word, string> wordDictionary = new Dictionary<Word, string>();
 
-    private void Awake()
+    protected override void Awake()
     {
         talkManager = TalkManager.Instance;
+        triggers = GetComponentsInChildren<Trigger>();
 
-        wordDictionary.Add(Word.StartWord, "과학 시험 8점을 맞은 다음 날, 눈을 떠보니 이곳이다. 어떤 분이 끌고 오셨는지는 하나도 모르겠지만 느낌표에 다가가 문제를 풀어야 할 것 같다.");
+        wordDictionary.Add(Word.StartWord, "과학 시험 8점을 맞은 다음 날, 눈을 떠보니 이곳이다. 느낌표에 다가가 문제를 풀어야 할 것 같다. 1");
+        wordDictionary.Add(Word.Locked, "잠긴 것 같다. 1");
+        wordDictionary.Add(Word.GravityDir, "숫자가 필요해 보인다. 3");
+        wordDictionary.Add(Word.Yeppy, "문제를 풀었다! 2");
+        wordDictionary.Add(Word.Clear, "드디어 집에 갈 수 있어! 4");
     }
 
     private void Start()

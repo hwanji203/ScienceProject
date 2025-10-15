@@ -9,7 +9,7 @@ public class Question : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame && playerIn == true)
+        if (Keyboard.current.eKey.wasPressedThisFrame && playerIn == true && Time.timeScale != 0)
         {
             QuestionManager.Instance.OpenQuestion(myType);
         }

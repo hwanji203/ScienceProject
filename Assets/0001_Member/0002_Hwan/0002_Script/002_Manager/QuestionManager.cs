@@ -2,7 +2,11 @@ using UnityEngine;
 
 public enum QuestionType
 {
-    None
+    None,
+    Que_1,
+    Que_2,
+    Que_3,
+    Que_4
 }
 
 public class QuestionManager : MonoSingleton<QuestionManager>
@@ -14,11 +18,7 @@ public class QuestionManager : MonoSingleton<QuestionManager>
         if (opened == true) return;
         opened = false;
 
-        switch (questionType)
-        {
-            case QuestionType.None:
-                break;
-        }
+        Debug.Log(questionType);
         Time.timeScale = 0;
     }
 }

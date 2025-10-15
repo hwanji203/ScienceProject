@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        OnVelocityChange?.Invoke(Time.timeScale != 0 ? currentDirection : Vector2.zero);
+
         HandleKey(Key.W, Vector2.up);
         HandleKey(Key.A, Vector2.left);
         HandleKey(Key.S, Vector2.down);
@@ -79,7 +81,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        OnVelocityChange(currentDirection);
         FaceDirection(currentDirection);
     }
 

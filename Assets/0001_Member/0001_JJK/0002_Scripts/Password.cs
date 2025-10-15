@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Password : MonoBehaviour
 {
-    [SerializeField] private string password = "1234";
+    [SerializeField] private PasswordSO passwordSO;
     private string input = "";
 
     [SerializeField] private Text text;
@@ -27,8 +27,8 @@ public class Password : MonoBehaviour
     public void Enter()
     {
         if (isLocked) return;
-        
-        if (input == password)
+
+        if (input == passwordSO.passWord.ToString())
             StartCoroutine(Correct());
         else
         {
@@ -55,6 +55,12 @@ public class Password : MonoBehaviour
     private void Update()
     {
         text.text = input;
+        Time.timeScale = 0;
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            gameObject.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 
     private IEnumerator Correct()
@@ -62,7 +68,7 @@ public class Password : MonoBehaviour
         text.fontSize = 90;
         input = "Unlocked";
         
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
         
         SceneManager.LoadScene(2);
     }
