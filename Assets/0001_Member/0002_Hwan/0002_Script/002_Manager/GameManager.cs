@@ -7,7 +7,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private TextMeshProUGUI tmp;
 
     private int count = 0;
-
+    public int iniCount = 0;
     protected override void Awake()
     {
         passwordSO.passWord = Random.Range(1000, 10000);

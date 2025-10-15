@@ -4,12 +4,14 @@ using UnityEngine.UI;
 public enum SliderType
 {
     SFX,
-    BGM
+    BGM,
+    Speeeed
 }
 
 public class SliderUI : MonoBehaviour
 {
     [SerializeField] private SliderType myValueType;
+    [SerializeField] private PlayerMovement pm;
     private float maxValue;
 
     private IChangeable changeable;
@@ -25,8 +27,14 @@ public class SliderUI : MonoBehaviour
         soundManager = SoundManager.Instance;
         saveManager = SaveManager.Instance;
 
-        Initialized();
 
+    }
+
+    private void Start()
+    {
+        Initialized();
+        GameManager.Instance.iniCount++;
+        if (GameManager.Instance.iniCount == 3) GameObject.Find("Menu").SetActive(false);
     }
 
 
@@ -38,15 +46,6 @@ public class SliderUI : MonoBehaviour
 
     private void Initialized()
     {
-        maxValue = slider.maxValue;
-        slider.value = PlayerPrefs.GetFloat(myValueType.ToString()) * maxValue;
-
-        slider.onValueChanged.AddListener((sliderValue) =>
-        {
-            soundManager.Play(SFXSoundType.SliderValueChange);
-            ChangeValue(sliderValue);
-        });
-
         switch (myValueType)
         {
             case SliderType.SFX:
@@ -55,6 +54,27 @@ public class SliderUI : MonoBehaviour
             case SliderType.BGM:
                 changeable = soundManager.GetComponent<IChangeable>();
                 break;
+            case SliderType.Speeeed:
+                changeable = pm;
+                break;
         }
+
+        maxValue = slider.maxValue;
+        slider.value = PlayerPrefs.GetFloat(myValueType.ToString(), NewValue()) * maxValue;
+
+        slider.onValueChanged.AddListener((sliderValue) =>
+        {
+            soundManager.Play(SFXSoundType.SliderValueChange);
+            ChangeValue(sliderValue);
+        });
+    }
+
+    private float NewValue()
+    {
+        if (!PlayerPrefs.HasKey(myValueType.ToString()))
+        {
+            ChangeValue(0.5f * maxValue);
+        }
+        return 0.5f;
     }
 }

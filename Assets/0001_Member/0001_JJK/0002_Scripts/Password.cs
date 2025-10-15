@@ -67,7 +67,8 @@ public class Password : MonoBehaviour
     {
         text.fontSize = 90;
         input = "Unlocked";
-        
+
+        TutorialManager.Instance.Talk(Word.Clear1);
         yield return new WaitForSecondsRealtime(2f);
         
         SceneManager.LoadScene(2);
@@ -75,14 +76,15 @@ public class Password : MonoBehaviour
     
     private IEnumerator Wrong()
     {
+        TutorialManager.Instance.Talk(Word.Wrong);
         text.fontSize = 90;
         input = "Try Again";
         
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSecondsRealtime(1.5f);
         
         input = "";
         
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         
         text.fontSize = 120;
     }
@@ -96,7 +98,7 @@ public class Password : MonoBehaviour
         while (countdown > 0)
         {
             input = $"Locked: {countdown}s";
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSecondsRealtime(1f);
             countdown--;
         }
 

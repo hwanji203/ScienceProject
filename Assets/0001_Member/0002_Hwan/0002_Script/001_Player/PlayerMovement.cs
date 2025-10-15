@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IChangeable
 {
     [SerializeField] private float speed = 3f;
     public Vector2 moveDir { get; private set; }
@@ -86,11 +86,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        rb.linearVelocity = currentDirection * speed;
+        rb.linearVelocity = currentDirection * speed * 10;
     }
 
     public void FaceDirection(Vector2 moveDir)
     {
         if (moveDir.x != 0) transform.eulerAngles = moveDir.x > 0 ? Vector3.zero : new Vector3(0, 180f, 0);
+    }
+
+    public void OnChange()
+    {
+        speed = PlayerPrefs.GetFloat(SliderType.Speeeed.ToString());
     }
 }

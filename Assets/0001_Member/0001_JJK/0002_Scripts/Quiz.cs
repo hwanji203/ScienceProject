@@ -33,6 +33,7 @@ public class Quiz : MonoBehaviour
 
     private void Update()
     {
+        Time.timeScale = 0;
         if (Input.GetKeyDown(KeyCode.Return) && !string.IsNullOrEmpty(RemoveUTags(realText.text)))
         {
             CheckAnswer(RemoveUTags(realText.text));
@@ -88,7 +89,7 @@ public class Quiz : MonoBehaviour
         }
         else
         {
-            TutorialManager.Instance.Talk(Word.Wrong);
+            TutorialManager.Instance.Talk(Word.PassWrong);
         }
 
 
