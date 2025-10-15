@@ -136,6 +136,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quiz_2
       objectReference: {fileID: 0}
+    - target: {fileID: 3623857232632247630, guid: 46e405b7b903d8e4e9a7d694a0545ffd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380118813028580798, guid: 46e405b7b903d8e4e9a7d694a0545ffd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8213178450084287613, guid: 46e405b7b903d8e4e9a7d694a0545ffd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
