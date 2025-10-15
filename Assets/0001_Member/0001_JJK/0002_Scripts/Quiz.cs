@@ -82,15 +82,13 @@ public class Quiz : MonoBehaviour
 
         if (string.Equals(a, b, StringComparison.Ordinal))
         {
-            Debug.Log("정답입니다!");
+            GameManager.Instance.SetPassword();
+            TutorialManager.Instance.Talk(Word.Yeppy);
+            gameObject.SetActive(false);
         }
         else
         {
-            Debug.Log("오답입니다.");
-            Debug.Log($"[A] \"{a}\"  (len={a.Length})");
-            Debug.Log($"[B] \"{b}\"  (len={b.Length})");
-            Debug.Log($"[A codes] {DumpCodePoints(a)}");
-            Debug.Log($"[B codes] {DumpCodePoints(b)}");
+            TutorialManager.Instance.Talk(Word.Wrong);
         }
 
 

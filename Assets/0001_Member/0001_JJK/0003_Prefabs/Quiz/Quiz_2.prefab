@@ -89,6 +89,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5326447665889236302, guid: 7b779d475a528b940acf37aded5ea856, type: 3}
+      propertyPath: realText
+      value: 
+      objectReference: {fileID: 8750002231945786536}
+    - target: {fileID: 5326447665889236302, guid: 7b779d475a528b940acf37aded5ea856, type: 3}
       propertyPath: contentData
       value: 
       objectReference: {fileID: 11400000, guid: 4ee7ae6b71ef0044b8d81a8ead1a9232, type: 2}
@@ -105,3 +109,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b779d475a528b940acf37aded5ea856, type: 3}
+--- !u!114 &8750002231945786536 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 128522526464971859, guid: 7b779d475a528b940acf37aded5ea856, type: 3}
+  m_PrefabInstance: {fileID: 8693875983881887995}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

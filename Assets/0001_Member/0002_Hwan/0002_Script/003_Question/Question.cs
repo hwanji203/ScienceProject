@@ -3,15 +3,21 @@ using UnityEngine.InputSystem;
 
 public class Question : MonoBehaviour
 {
-    [SerializeField] private QuestionType myType;
+    [SerializeField] private GameObject myQuiz;
 
     private bool playerIn;
+
+    private void Awake()
+    {
+        myQuiz.SetActive(false);
+    }
 
     private void Update()
     {
         if (Keyboard.current.eKey.wasPressedThisFrame && playerIn == true && Time.timeScale != 0)
         {
-            QuestionManager.Instance.OpenQuestion(myType);
+            QuestionManager.Instance.OpenQuestion(myQuiz);
+            Destroy(gameObject);
         }
     }
 
