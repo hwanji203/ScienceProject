@@ -16,6 +16,7 @@ public class Question : MonoBehaviour
     {
         if (Keyboard.current.eKey.wasPressedThisFrame && playerIn == true && Time.timeScale != 0)
         {
+            SoundManager.Instance.Play(SFXSoundType.OpenBook);
             QuestionManager.Instance.OpenQuestion(myQuiz);
             Destroy(gameObject);
         }

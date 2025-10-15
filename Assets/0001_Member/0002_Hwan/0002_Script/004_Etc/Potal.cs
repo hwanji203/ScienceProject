@@ -6,6 +6,7 @@ public class Potal : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        SoundManager.Instance.Play(SFXSoundType.OpenDoor);
         collision.transform.position = movePos.position;
     }
 }

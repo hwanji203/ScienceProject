@@ -65,17 +65,20 @@ public class Password : MonoBehaviour
 
     private IEnumerator Correct()
     {
+        SoundManager.Instance.Play(SFXSoundType.Correct);
         text.fontSize = 90;
         input = "Unlocked";
 
         TutorialManager.Instance.Talk(Word.Clear1);
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(4f);
         
         SceneManager.LoadScene(2);
     }
     
     private IEnumerator Wrong()
     {
+        SoundManager.Instance.Play(SFXSoundType.Wrong);
+
         TutorialManager.Instance.Talk(Word.Wrong);
         text.fontSize = 90;
         input = "Try Again";

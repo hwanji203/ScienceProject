@@ -83,12 +83,15 @@ public class Quiz : MonoBehaviour
 
         if (string.Equals(a, b, StringComparison.Ordinal))
         {
+            SoundManager.Instance.Play(SFXSoundType.Correct);
+
             GameManager.Instance.SetPassword();
             TutorialManager.Instance.Talk(Word.Yeppy);
             gameObject.SetActive(false);
         }
         else
         {
+            SoundManager.Instance.Play(SFXSoundType.Wrong);
             TutorialManager.Instance.Talk(Word.PassWrong);
         }
 

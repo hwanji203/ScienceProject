@@ -4,13 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum SFXSoundType
 {
-    None,
     SliderValueChange,
-    BirdsSwing,
-    GetBird,
-    Hited,
     Wrong,
-    Type
+    Type,
+    Hmm,
+    Angry,
+    Yea,
+    Why,
+    Cry,
+    A,
+    Haa,
+    Giyaa,
+    Correct,
+    OpenBook,
+    OpenDoor,
+    Step,
+    WrongSF
 }
 
 public enum BGMSoundType
