@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1132018293668910726, guid: 7b779d475a528b940acf37aded5ea856, type: 3}
+      propertyPath: m_text
+      value: "\uCD08\uC131 : \u3145\u3139\u3134\u3147\u3137"
+      objectReference: {fileID: 0}
     - target: {fileID: 5326447665889236302, guid: 7b779d475a528b940acf37aded5ea856, type: 3}
       propertyPath: realText
       value: 
