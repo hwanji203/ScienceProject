@@ -34,7 +34,6 @@ public class Quiz : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            UpdateAnswer();
             CheckAnswer(playerInput);
         }
     }
@@ -51,7 +50,7 @@ public class Quiz : MonoBehaviour
         playerInput = playerInput.Trim().Normalize(NormalizationForm.FormC);
         string normalizedAnswer = correctAnswer.Trim().Normalize(NormalizationForm.FormC);
 
-        if (playerInput == correctAnswer)
+        if (normalizedAnswer == correctAnswer)
         {
             Debug.Log("정답입니다!");
             //ShowHint();
